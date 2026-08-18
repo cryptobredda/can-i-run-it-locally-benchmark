@@ -1,0 +1,49 @@
+{
+  "name": "can-i-run-it-locally-benchmark",
+  "version": "0.2.0",
+  "description": "Open-source local AI hardware and inference benchmark client for can I run it locally .ai.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cryptobredda/can-i-run-it-locally-benchmark.git"
+  },
+  "homepage": "https://canirunitlocally.ai/benchmarks",
+  "bugs": "https://github.com/cryptobredda/can-i-run-it-locally-benchmark/issues",
+  "bin": {
+    "ciritl-bench": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "bench": "tsx src/index.ts",
+    "build": "tsup src/index.ts --format esm --platform node --target node22 --clean",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "verify": "npm run typecheck && npm test && npm run build && node dist/index.js --help",
+    "prepack": "npm run verify"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsup": "^8.5.0",
+    "tsx": "^4.23.12",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2"
+  }
+}
